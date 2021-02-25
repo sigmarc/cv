@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <meta name="author" content="Marc Ibars">
+
+    <!--<link rel="icon" href="/favicon.ico">-->
+
+	<title> Marc Ibars </title>
+
+	<!-- Setup Before-After Plugin dependencies -->
+	<script type="text/javascript" src="plugin/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="plugin/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script type="text/javascript" src="plugin/js/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="plugin/js/jquery.beforeafter-map-0.11.js"></script>
+
+	<!-- Setup Leaflet -->
+	<script type="text/javascript" src="plugin/js/leaflet.js"></script>
+	<link rel="stylesheet" type="text/css" href="plugin/css/leaflet.css" />	
+
+	<!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<!--Google Fonts-->
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+	<!--Custom CSS-->
+	<link rel="stylesheet" href="plugin/css/style.css">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->  
+</head>
+
+<body>
+
+	<div class= "container">
+
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+		            <li role="presentation" class="active"><a href="/">GIS & Cartography Portfolio</a></li>
+		            <!--<li role="presentation"><a href="timeline.html">Timeline</a></li>-->
+		            <!--<li role="presentation"><a href="resume.html">Resume</a></li>-->
+		            <li role="presentation"><a href="contact">Contact</a></li>
+	      		</ul>
+      		</nav>
+
+        	<h3 role="presentation" class="text-muted"><a href="/">Marc Ibars</a></h3>
+    	</div>     
+
+     <h2>Before-After Plugin <small>August 2016</small></h2>
+
+     <p>The<a href="http://www.catchmyfame.com/catchmyfame-jquery-plugins/jquery-beforeafter-plugin/" target="_blank"> Before-After Plugin</a> permits to drag a slider over an image and see the differences. When applied on a Leaflet Map and using orthophoto of Catalonia from 1956 and 2016 we can see the major alterations on the land. I liked a lot to tinker with it and exploring specific locations to see how the landscape has changed on the past 60 years. I selected few interesting examples where the variations are quite marked.</p>
+     <p>In the first example we can see how the Ebro Delta has increased in some parts. Notice that on 1956 the only bridge to cross the Delta was up in Amposta :) </p>
+
+	<!-- Create a map container div and divs for your two maps -->
+	<div id="map-container">
+		<!-- Make sure to give the map divs height and width -->
+		<div id="before" style="height:500px;width:100%;position:absolute;"></div>
+		<div id="after" style="height:500px;width:100%;position:absolute;"></div>			
+	</div> 
+		
+	<br>
+	<br>
+
+	<p>Some other interesting locations:</p>
+
+		<div class="row-fluid">
+
+		<ul>
+			<li>
+			<button type="button" class="btn btn-link btn-sm" role="button" id="1">Barcelona 1992 Montjuïc Olympic Site</button>
+			</li>
+
+			<li>
+			<button type="button" class="btn btn-link btn-sm" role="button" id="2">Empuriabrava: Building up a canal Venice-like town out of nowhere</button>
+			</li>
+			
+			<li>
+			<button type="button" class="btn btn-link btn-sm" role="button" id="3"> Ascó Nuclear Plant Site</button>
+			</li>
+
+			<li>
+			<button type="button" class="btn btn-link btn-sm" role="button" id="4">L'estartit: A great example of rapid coastal urbanization</button>
+			</li>
+
+			<li>
+			<button type="button" class="btn btn-link btn-sm" role="button" id="5">Estany d'Ivars: Once a lake, dried up on 1951 for farming and fully recovered on 2005</button> 
+			</li>
+		</ul>
+
+		</div>	
+
+	<p>Layers Details:</p>
+	<p>- Orthophoto of Catalonia American Flight serie B 1:5.000 (1956-57) </p>
+	<p>- Orthophoto of Catalonia 1:5.000 current (2016) </p>
+	<p>Source: http://www.icgc.cat </p>
+
+    <footer class="footer">
+      <p>&copy; Marc Ibars 2016</p>
+    </footer>
+
+  </div> <!--/container-->
+
+  <script type="text/javascript">
+
+	$(function() {
+
+		// create a map in the "before" and "after" divs, set the view to a given place and zoom
+		// You may want to turn attributionControl off so that the Leaflet attribution doesn't slide with the slider. Place all attribution on the after map.
+		// You may also want to turn off inertia, which in some cases can cause the maps to go out of sync
+
+		var center = [40.730028,  0.743183], zoom = 12,
+		before = L.map('before', {attributionControl: false, inertia: false, minZoom: 10}).setView(center, zoom),
+		after = L.map('after', {inertia: false, minZoom: 10}).setView(center, zoom);
+
+		//WMS ICC Vol americà 1956
+		var layer1 = L.tileLayer.wms("http://geoserveis.icc.cat/icc_ortohistorica/wms/service?", {
+		    layers: 'ovab5m',
+		    format: 'image/png',
+		}).addTo(before);
+
+		//WMS ICC Ortofoto actual
+		var layer2 = L.tileLayer.wms("http://geoserveis.icc.cat/icc_mapesbase/wms/service?", {
+		    layers: 'orto5m',
+		    format: 'image/png',	   
+		    attribution: ' ICGC',
+  		}).addTo(after);	
+		
+
+		// Call the Before-After plugin, passing through the variables that you used to setup the maps, and (optional) any options you'd like
+		$('#map-container').beforeAfter(before,after);			
+
+		//Click functions
+
+		$('#1').on('click', function(){
+		  before.setView(new L.LatLng(41.364834, 2.150561), 15);
+		  after.setView(new L.LatLng(41.364834, 2.150561), 15);
+		});	
+
+		$('#2').on('click', function(){
+		  before.setView(new L.LatLng(42.249836, 3.115954), 14);
+		  after.setView(new L.LatLng(42.249836, 3.115954), 14);
+		});	
+
+		$('#3').on('click', function(){
+		  before.setView(new L.LatLng(41.204764, 0.569473), 15);
+		  after.setView(new L.LatLng(41.204764, 0.569473), 15);
+		});		
+
+		$('#4').on('click', function(){
+		  before.setView(new L.LatLng(42.05229, 3.200590), 15);
+		  after.setView(new L.LatLng(42.05229, 3.200590), 15);
+		});		
+
+		$('#5').on('click', function(){
+		  before.setView(new L.LatLng(41.682914, 0.947007), 15);
+		  after.setView(new L.LatLng(41.682914, 0.947007), 15);
+		});
+
+	});
+
+
+</script>
+
+</body>
+
+</html>

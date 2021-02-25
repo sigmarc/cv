@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title> Marc Ibars </title>
+
+<head>
+
+<!-- Setup Before-After Plugin dependencies -->
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="js/jquery.beforeafter-map-0.11.js"></script>
+
+<!-- Setup Leaflet -->
+<script type="text/javascript" src="js/leaflet.js"></script>
+<link rel="stylesheet" type="text/css" href="css/leaflet.css" />
+
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+<!--Google Fonts-->
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+<!--Custom CSS-->
+<link rel="stylesheet" type="text/css" href="css/style.css/">
+
+ <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div class= "container">
+
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+		            <li role="presentation" class="active"><a href="/">GIS & Cartography Portfolio</a></li>
+		            <!--<li role="presentation"><a href="timeline.html">Timeline</a></li>-->
+		            <!--<li role="presentation"><a href="resume.html">Resume</a></li>-->
+		            <li role="presentation"><a href="contact">Contact</a></li>
+	      		</ul>
+      		</nav>
+        <h3 role="presentation" class="text-muted"><a href="/">Marc Ibars</a></h3>
+    </div>
+
+<h2>Before-After Plugin <small>August 2016</small></h2>   
+
+<p> 1956-2016 </p>
+
+<!-- Create a map container div and divs for your two maps -->
+<div id="map-container">
+	<!-- Make sure to give the map divs height and width -->
+	<div id="before" style="height:400px;width:600px; position:absolute;"></div>
+	<div id="after" style="height:400px;width:600px;position:absolute;"></div>
+</div>
+
+<div id="legend" position="relative">
+
+<br>
+
+<h4>Some interesting locations:</h4>
+
+<ul>
+	<li><button type="button" class="btn btn-link" role="button" id="1">Barcelona Montjuic Olympic Site</a></li>
+	<li><button type="button" class="btn btn-link" role="button" id="2">My Home Town :)</a></li>
+	<li><button type="button" class="btn btn-link" role="button" id="3">Coastal Urbanization Example</a> </li>
+</ul>
+
+<p>Layers:</p>
+<p>*Ortofoto de Catalunya del Vol americà sèrie B 1:5.000 (1956-57)</p>
+<p>**Ortofoto de Catalunya 1:2.500 vigent</p>
+<p>Source: http://www.icgc.cat/Administracio-i-empresa/Serveis/Geoinformacio-en-linia-Geoserveis/WMS-i-WMTS/WMS-de-cartografia-raster </p>
+
+	<footer class="footer">
+      <p>&copy; Marc Ibars 2016</p>
+    </footer>
+
+  </div> <!--/container-->
+
+<script type="text/javascript">
+	$(function() {
+		// create a map in the "before" and "after" divs, set the view to a given place and zoom
+		// You may want to turn attributionControl off so that the Leaflet attribution doesn't slide with the slider. Place all attribution on the after map.
+		// You may also want to turn off inertia, which in some cases can cause the maps to go out of sync
+		var center = [40.694440, 0.790479], zoom = 12,
+		before = L.map('before', {attributionControl: false, inertia: false, minZoom: 10}).setView(center, zoom),
+		after = L.map('after', {inertia: false, minZoom: 10}).setView(center, zoom);
+
+		//WMS ICC Vol americà 1956
+		var layer1 = L.tileLayer.wms("http://geoserveis.icc.cat/icc_ortohistorica/wms/service?", {
+		    layers: 'ovab5m',
+		    format: 'image/png',	  
+		}).addTo(before);
+
+		//WMS ICC Ortofoto actual
+		var layer2 = L.tileLayer.wms("http://geoserveis.icc.cat/icc_mapesbase/wms/service?", {
+		    layers: 'orto25c',
+		    format: 'image/png',	   
+		    attribution: ' ICGC',
+  		}).addTo(after);	
+		
+		// Call the Before-After plugin, passing through the variables that you used to setup the maps, and (optional) any options you'd like
+		$('#map-container').beforeAfter(before,after);		
+		
+		//Click functions
+		$('#1').on('click', function(){
+		  before.setView(new L.LatLng(41.364834, 2.150561), 15);
+		  after.setView(new L.LatLng(41.364834, 2.150561), 15);
+		});		
+
+		$('#2').on('click', function(){
+		  before.setView(new L.LatLng(41.780023, 3.032088), 15);
+		  after.setView(new L.LatLng(41.780023, 3.032088), 15);
+		});
+
+		$('#3').on('click', function(){
+		  before.setView(new L.LatLng(42.05229, 3.200590), 15);
+		  after.setView(new L.LatLng(42.05229, 3.200590), 15);
+		});
+		
+
+	});
+
+</script>
+
+</body>
+</html>
