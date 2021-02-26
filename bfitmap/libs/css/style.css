@@ -1,0 +1,30 @@
+
+	html, body { 
+		height: 100%
+	}
+		
+	#map {
+		min-height: 100%; 
+	}
+		
+	body {
+		margin: 0;
+		font-family: 'Open Sans', sans-serif; 12px;
+		overflow: hidden;
+		background-color: #f00;
+	}
+	
+	.info { 
+		padding: 6px 8px;	    
+	    font-family:14px/16px 'Open Sans', sans-serif;
+	    background: white;
+	    background: rgba(255,255,255,0.8);
+	    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	    border-radius: 5px;
+	}
+
+	.info h4 {
+	    margin: 0 0 5px;
+	    color: #777;
+	    font-family: 'Open Sans', sans-serif;
+	}
