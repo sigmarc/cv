@@ -1,0 +1,27 @@
+
+	html, body { 
+		height: 100%
+	}
+		
+	#map {
+		min-height: 100%; 
+	}
+		
+	body {
+		margin: 0;
+		font-family: Helvetica, Arial, sans-serif; font-size: 12px;
+		overflow: hidden;
+		background-color: #f00;
+	}
+
+	.logos {
+		position: absolute;	
+		z-index: 9;
+		top: 10px;
+		left: 50px;
+	}
+	
+	.leaflet-container {
+    font: 11px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+    }
+	
