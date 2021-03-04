@@ -1,9 +1,9 @@
 		
 function init() { 
 
-  //Add custom ZoomControl with ZoomHome
+  /*//Add custom ZoomControl with ZoomHome
   var zoomHome = L.Control.zoomHome();
-  zoomHome.addTo(map);
+  zoomHome.addTo(map);  */
 
 //baseLayers
 var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
@@ -17,14 +17,14 @@ var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: 
     layers: [grayscale]
  }); 
 
-   //Font Awesome Style
+  /* //Font Awesome Style
   var style = L.AwesomeMarkers.icon ({
     icon: 'shopping-cart',
     prefix: 'fa',
     markerColor: 'darkred'
-  }); 
+  });  */
 
-  var tiendas = L.geoJson(null, {
+  /* var tiendas = L.geoJson(null, {
     style: function (feature) {
       return feature.properties && feature.properties.style;
     },  
@@ -40,7 +40,7 @@ var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: 
   //Uploading the GeoJSON's
   $.getJSON('geojson/tiendas.geojson', function(data){
     tiendas.addData(data);
-  }); 
+  });    *\
 
   /*
   //WMS Geoserver Service Area
@@ -62,12 +62,12 @@ var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: 
     "Grayscale": grayscale,
     "Streets": streets
   };
-
+  /*
   var overLayers = {
     "Stores": tiendas
    /* "Service Area": serviceArea,
-    "Clients": clients */
-  };
+    "Clients": clients 
+  }; */
   
   //Layer and Scale Controls
   L.control.layers (baseLayers,overLayers).addTo(map); 
@@ -76,7 +76,7 @@ var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: 
   
   //Leaflet Search
   //Canviat l'atribut "title" per "Sfid" a l'arxiu base del plugin
-  map.addControl( new L.Control.Search({layer:tiendas}) ); 
+  //map.addControl( new L.Control.Search({layer:tiendas}) ); 
   
 }	
 
