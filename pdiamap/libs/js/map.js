@@ -24,14 +24,14 @@ function init() {
   });
 
 
-  /* //Font Awesome Style
+  //Font Awesome Style
   var style = L.AwesomeMarkers.icon ({
     icon: 'shopping-cart',
     prefix: 'fa',
     markerColor: 'darkred'
-  });  */
+  });  
 
-  /* var tiendas = L.geoJson(null, {
+  var tiendas = L.geoJson(null, {
     style: function (feature) {
       return feature.properties && feature.properties.style;
     },  
@@ -47,7 +47,7 @@ function init() {
   //Uploading the GeoJSON's
   $.getJSON('geojson/tiendas.geojson', function(data){
     tiendas.addData(data);
-  });    *\
+  });    
 
   /*
   //WMS Geoserver Service Area
@@ -71,20 +71,20 @@ function init() {
     "Satelite": sat 
   };
 
-  /*
+  
   var overLayers = {
     "Stores": tiendas
    /* "Service Area": serviceArea,
-    "Clients": clients 
-  }; */
+    "Clients": clients */
+  }; 
   
   //Layer and Scale Controls
-  L.control.layers (baseLayers{collapsed: false}).addTo(map); 
+  L.control.layers (baseLayers,{collapsed: false}).addTo(map); 
   L.control.scale().addTo(map);
    
   //Leaflet Search
   //Canviat l'atribut "title" per "Sfid" a l'arxiu base del plugin
-  //map.addControl( new L.Control.Search({layer:tiendas}) ); 
+  map.addControl( new L.Control.Search({layer:tiendas}) ); 
   
 }	
 
