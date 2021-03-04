@@ -1,30 +1,21 @@
 		
-function init() {
-
-  //New Map
-  var map = L.map('map', {
-    center: [40.410368, -3.734896],
-    zoom: 6,
-    zoomControl: false,
-    layers: [esri, tiendas]
-  }); 
+function init() { 
 
   //Add custom ZoomControl with ZoomHome
   var zoomHome = L.Control.zoomHome();
   zoomHome.addTo(map);
 
-  //OpenSteetMaps Basemap
-  var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  });
-  // World Street Map d'ESRI
-  var esri = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'ESRI &copy;'
-  }).addTo(map);
-  //Satèl·lit basemap d'ESRI
-  var sat = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; &mdash; Source: Esri'
-  }); 
+//baseLayers
+var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
+    streets   = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
+
+ //New Map
+ var map = L.map('map', {
+    center: [40.410368, -3.734896],
+    zoom: 6,
+    zoomControl: false,
+    layers: [grayscale]
+ }); 
 
    //Font Awesome Style
   var style = L.AwesomeMarkers.icon ({
@@ -37,16 +28,13 @@ function init() {
     style: function (feature) {
       return feature.properties && feature.properties.style;
     },  
-
     pointToLayer: function (feature, latlng) {
       return L.marker(latlng, 
         {icon:style}); 
     },
-
     onEachFeature: function(feature, layer) {
       layer.bindPopup('<h5 align="center"><b> Store ID: ' + feature.properties.tienda + '</b></h5>');
     }
-
   }).addTo(map); 
    
   //Uploading the GeoJSON's
@@ -71,9 +59,8 @@ function init() {
   */
 
   var baseLayers = {
-    "Callejero": esri,
-    "Open Street Map": basemap,    
-    "Satelite": sat 
+    "Grayscale": grayscale,
+    "Streets": streets
   };
 
   var overLayers = {
@@ -82,17 +69,14 @@ function init() {
     "Clients": clients */
   };
   
-  //LayerControl
+  //Layer and Scale Controls
   L.control.layers (baseLayers,overLayers).addTo(map); 
-  
+  L.control.scale().addTo(map);  
   //{collapsed: false}
   
   //Leaflet Search
   //Canviat l'atribut "title" per "Sfid" a l'arxiu base del plugin
-  map.addControl( new L.Control.Search({layer:tiendas}) );
-
-  //Scale Control
-  L.control.scale().addTo(map);
+  map.addControl( new L.Control.Search({layer:tiendas}) ); 
   
 }	
 
