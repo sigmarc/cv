@@ -46,11 +46,19 @@ function init() {
   }).addTo(map);
 
 
+  // Layer clients
   var clients = L.geoJson(null, {
-    onEachFeature: popup
-  });
-  clients.addTo(map);
+      style: function (feature) {
+        return {
+        color: "#000000",
+        weight: 0.25,
+        opacity: 0.5,
+        fillOpacity: 10 
+        };
+      }   
+  }).addTo(map);
    
+
   //Uploading the GeoJSONs
   $.getJSON('geojson/clients.geojson', function(data){
     clients.addData(data);
