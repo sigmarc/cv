@@ -1,21 +1,28 @@
 		
 function init() { 
 
-  //Add custom ZoomControl with ZoomHome
+ //New Map
+  var map = L.map('map',{zoomControl: false}).setView([40.410368, -3.734896],6); 
+
+//Add custom ZoomControl with ZoomHome
   var zoomHome = L.Control.zoomHome();
   zoomHome.addTo(map);
 
-//baseLayers
-var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
-    streets   = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
+  //OpenSteetMaps Basemap
+  var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  });
 
- //New Map
- var map = L.map('map', {
-    center: [40.410368, -3.734896],
-    zoom: 6,
-    zoomControl: false,
-    layers: [grayscale]
- }); 
+  // World Street Map d'ESRI
+  var esri = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'ESRI &copy;'
+  }).addTo(map);
+
+  //Satèl·lit basemap d'ESRI
+  var sat = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles &copy; &mdash; Source: Esri'
+  });
+
 
   /* //Font Awesome Style
   var style = L.AwesomeMarkers.icon ({
@@ -59,9 +66,11 @@ var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: 
   */
 
   var baseLayers = {
-    "Grayscale": grayscale,
-    "Streets": streets
+    "Callejero": esri,
+    "Open Street Map": basemap,    
+    "Satelite": sat 
   };
+
   /*
   var overLayers = {
     "Stores": tiendas
@@ -70,10 +79,9 @@ var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: 
   }; */
   
   //Layer and Scale Controls
-  L.control.layers (baseLayers,overLayers).addTo(map); 
-  L.control.scale().addTo(map);  
-  //{collapsed: false}
-  
+  L.control.layers (baseLayers,overLayers,{collapsed: false}).addTo(map); 
+  L.control.scale().addTo(map);
+   
   //Leaflet Search
   //Canviat l'atribut "title" per "Sfid" a l'arxiu base del plugin
   //map.addControl( new L.Control.Search({layer:tiendas}) ); 
