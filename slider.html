@@ -92,12 +92,10 @@
 		</ul>
 		</div>	
 
-
 	<p>Layers Details:</p>
 	<p>- Orthophoto of Catalonia American Flight serie B 1:5.000 (1956-57) </p>
 	<p>- Orthophoto of Catalonia 1:5.000 current (2016) </p>
 	<p>Source: http://www.icgc.cat </p>
-
 
     <footer class="footer">
     <p>&copy; Marc Ibars 2021</p>
@@ -116,45 +114,37 @@
 		before = L.map('before', {attributionControl: false, inertia: false, minZoom: 10}).setView(center, zoom),
 		after = L.map('after', {inertia: false, minZoom: 10}).setView(center, zoom);
 
-
 		//WMS ICC Vol americà 1956
-
-		var layer1 = L.tileLayer.wms("http://geoserveis.icc.cat/icc_ortohistorica/wms/service?", {
+		var layer1 = L.tileLayer.wms("https://geoserveis.icgc.cat/icc_ortohistorica/wms/service?", {
 		    layers: 'ovab5m',
 		    format: 'image/png',
 		}).addTo(before);
 
 		//WMS ICC Ortofoto actual
-		var layer2 = L.tileLayer.wms("http://geoserveis.icc.cat/icc_mapesbase/wms/service?", {
-		    layers: 'orto5m',
+		var layer2 = L.tileLayer.wms("https://geoserveis.icgc.cat/icc_ortohistorica/wms/service?", {
+		    layers: 'orto5m2016',
 		    format: 'image/png',
-		    attribution: ' ICGC',
+		    attribution:' ICGC',
   		}).addTo(after);
-
 
 		// Call the Before-After plugin, passing through the variables that you used to setup the maps, and (optional) any options you'd like
 		$('#map-container').beforeAfter(before,after);	
 
 		//Click functions
-
 		$('#1').on('click', function(){
 		  before.setView(new L.LatLng(41.364834, 2.150561), 15);
 		  after.setView(new L.LatLng(41.364834, 2.150561), 15);
 		});	
 
-
 		$('#2').on('click', function(){
 		  before.setView(new L.LatLng(42.249836, 3.115954), 14);
 		  after.setView(new L.LatLng(42.249836, 3.115954), 14);
-
 		});	
-
 
 		$('#3').on('click', function(){
 		  before.setView(new L.LatLng(41.204764, 0.569473), 15);
 		  after.setView(new L.LatLng(41.204764, 0.569473), 15);
 		});		
-
 
 		$('#4').on('click', function(){
 		  before.setView(new L.LatLng(42.05229, 3.200590), 15);
