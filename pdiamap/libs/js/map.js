@@ -70,7 +70,6 @@ function init() {
     "Open Street Map": basemap,    
     "Satelite": sat 
   };
-
   
   var overLayers = {
     "Stores": tiendas
@@ -79,7 +78,7 @@ function init() {
   }; 
   
   //Layer and Scale Controls
-  L.control.layers (baseLayers,{collapsed: false}).addTo(map); 
+  L.control.layers (baseLayers, overLayers{collapsed: false}).addTo(map); 
   L.control.scale().addTo(map);
    
   //Leaflet Search
