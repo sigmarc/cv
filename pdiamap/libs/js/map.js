@@ -78,7 +78,7 @@ function init() {
   }; 
   
   //Layer and Scale Controls
-  L.control.layers (baseLayers, overLayers{collapsed: false}).addTo(map); 
+  L.control.layers (baseLayers, overLayers,{collapsed: false}).addTo(map); 
   L.control.scale().addTo(map);
    
   //Leaflet Search
