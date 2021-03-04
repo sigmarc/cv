@@ -31,6 +31,7 @@ function init() {
     markerColor: 'darkred'
   });  
 
+  // Layer tiendas
   var tiendas = L.geoJson(null, {
     style: function (feature) {
       return feature.properties && feature.properties.style;
@@ -42,28 +43,28 @@ function init() {
     onEachFeature: function(feature, layer) {
       layer.bindPopup('<h5 align="center"><b> Store ID: ' + feature.properties.tienda + '</b></h5>');
     }
-  }).addTo(map); 
+  }).addTo(map);
+
+
+  var clients = L.geoJson(null, {
+    onEachFeature: popup
+  });
+  clients.addTo(map);
+
    
-  //Uploading the GeoJSON's
+  //Uploading the GeoJSONs
+  $.getJSON('geojson/clients.geojson', function(data){
+    clients.addData(data);
+  });  
+
   $.getJSON('geojson/tiendas.geojson', function(data){
     tiendas.addData(data);
-  });    
-
-  /*
-  //WMS Geoserver Service Area
-   var serviceArea = L.tileLayer.wms("http://traycco.com/geoserver/traycco/wms", {
-      layers: 'traycco:servicearea',
-      format: 'image/png',
-      transparent: "true",      
-  }).addTo(map);  -->
+  }); 
   
-  //WMS Geoserver CLIENTES IN
-  var clients = L.tileLayer.wms("http://traycco.com/geoserver/traycco/wms", {
-      layers: 'traycco:clients',
-      format: 'image/png',
-      transparent: "true",      
-  }).addTo(map);     
-  */
+  $.getJSON('geojson/servicearea.geojson', function(data){
+    servicearea.addData(data);
+  });  
+
 
   var baseLayers = {
     "Callejero": esri,
@@ -72,9 +73,9 @@ function init() {
   };
   
   var overLayers = {
-    "Stores": tiendas
-   /* "Service Area": serviceArea,
-    "Clients": clients */
+    "Stores": tiendas,
+    "Clients": clients, 
+    "Service Area": servicearea 
   }; 
   
   //Layer and Scale Controls
