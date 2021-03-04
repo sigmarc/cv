@@ -50,7 +50,6 @@ function init() {
     onEachFeature: popup
   });
   clients.addTo(map);
-
    
   //Uploading the GeoJSONs
   $.getJSON('geojson/clients.geojson', function(data){
