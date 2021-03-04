@@ -1,26 +1,16 @@
 <?php
-// check if fields passed are empty
-if(empty($_POST['name'])  		||
-   empty($_POST['email']) 		||
-   empty($_POST['message'])	||
-   !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
-   {
-	echo "No arguments Provided!";
-	return false;
-   }
-	
+if(isset( $_POST['name']))
 $name = $_POST['name'];
-$email_address = $_POST['email'];
+if(isset( $_POST['email']))
+$email = $_POST['email'];
+if(isset( $_POST['message']))
 $message = $_POST['message'];
-	
-// create email body and send it	
-$to = 'marc.giaoxuan@gmail.com'; // put your email
-$email_subject = "Contact form submitted by: $name";
-$email_body = "You have received a new message. \n\n".
-				  " Here are the details:\n \nName: $name \n ".
-				  "Email: $email_address\n Message \n $message";
-$headers = "From: me@marcibars.com\n";
-$headers .= "Reply-To: $email_address";	
-mail($to,$email_subject,$email_body,$headers);
-return true;			
+if(isset( $_POST['subject']))
+$subject = $_POST['subject'];
+
+$content="From: $name \n Email: $email \n Message: $message";
+$recipient = "marc.giaoxuan@gmail.com";
+$mailheader = "From: $email \r\n";
+mail($recipient, $subject, $content, $mailheader) or die("Error!");
+echo "Email sent!";
 ?>
