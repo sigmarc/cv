@@ -2,7 +2,12 @@
 function init() {
 
   //New Map
-  var map = L.map('map',{zoomControl: false}).setView([40.410368, -3.734896],6); 
+  var map = L.map('map', {
+    center: [40.410368, -3.734896],
+    zoom: 6,
+    zoomControl: false,
+    layers: [esri, tiendas]
+  }); 
 
   //Add custom ZoomControl with ZoomHome
   var zoomHome = L.Control.zoomHome();
@@ -16,7 +21,6 @@ function init() {
   var esri = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'ESRI &copy;'
   }).addTo(map);
-
   //Satèl·lit basemap d'ESRI
   var sat = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; &mdash; Source: Esri'
@@ -44,19 +48,19 @@ function init() {
     }
 
   }).addTo(map); 
-
    
   //Uploading the GeoJSON's
   $.getJSON('geojson/tiendas.geojson', function(data){
     tiendas.addData(data);
   });  
 
+  /*
   //WMS Geoserver Service Area
    var serviceArea = L.tileLayer.wms("http://traycco.com/geoserver/traycco/wms", {
       layers: 'traycco:servicearea',
       format: 'image/png',
       transparent: "true",      
-  }).addTo(map);
+  }).addTo(map);  -->
   
   //WMS Geoserver CLIENTES IN
   var clients = L.tileLayer.wms("http://traycco.com/geoserver/traycco/wms", {
@@ -64,6 +68,7 @@ function init() {
       format: 'image/png',
       transparent: "true",      
   }).addTo(map);     
+  */
 
   var baseLayers = {
     "Callejero": esri,
