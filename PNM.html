@@ -1,110 +1,87 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-	  <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <meta name="author" content="Marc Ibars">
-    <!--<link rel="icon" href="/favicon.ico">-->
-
-	<title> Marc Ibars </title>	
-
-	 <!-- Bootstrap Core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-
-	<!--Google Fonts-->
-	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-
-	<!--Custom CSS-->
-	<link rel="stylesheet" href="libs/css/style.css"> 
-
-	 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-	<div class= "container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
-		            <li role="presentation" class="active"><a href="/">GIS & Cartography Portfolio</a></li>
-		            <!--<li role="presentation"><a href="timeline.html">Timeline</a></li>-->
-		            <!--<li role="presentation"><a href="resume.html">Resume</a></li>-->
-		            <li role="presentation"><a href="contact">Contact</a></li>
-	      </ul>
-      </nav>
-        	<h3 role="presentation" class="text-muted"><a href="/">Marc Ibars</a></h3>
-    </div>       
- 
-      <h2>Montseny Natural Park Map Series <small>March 2015</small></h2>     
-
-      <p>The following set of maps of the <a href="http://parcs.diba.cat/web/montseny" target="_blank">Montseny Natural Park</a> were created as part of the Cartographic Module during the MS in GIS that I finished on March 2016. The purpose was to create 3 different kind of thematic maps to get familiar with cartographic design, symbology, map elements and composition.</p>  
-
-    <!--Mapa 1-->
-    <div class="col-md-13">
-
-      <h3> Topographic Map </h3>   
-
-      <img class="img-responsive img-rounded" id="pnm" src="img/topo.png" alt="Topographic Map" height="620px" width="100%">
-
-      <p>A topographic map is a type of map characterized by both natural and man-made features. It displays large-scale detail of ground relief (contour lines, landforms and terrain), drainage (rivers and water bodies), forest cover, populated areas, facilities, transportation routes  (roads and railways) and administrative areas.</p>
-
-      <a class="btn btn-primary" href="npmontseny/topo.pdf" role="button">Download Topographic Map (43 MB)</a>
-
-      <hr>     
-
-    </div>
-
-
-    <!--Mapa 2-->
-    <div class="col-md-13">
-
-      <h3> Vegetation Map </h3>          
-
-     <img class="img-responsive img-rounded" id="pnm" src="img/veg.png" alt="Vegetation Map" height="620px" width="100%">
-
-      <p>The vegetation map shows a different range of colors according to the natural vegetation or land cover within the boundaries of the Park. The categories identified are forest, brushwood, crop, pasture, grassland, tree plantation, orchard, riparian strip and rocky surface.</p>
-
-      <a class="btn btn-primary" href="npmontseny/veget.pdf" role="button">Download Vegetation Map (14 MB)</a>
-
-      <hr>
-
-    </div>
-
-    <!--Mapa 3-->
-    <div class="col-md-13">
-
-      <h3> Touristic Map </h3> 
-
-      <img class="img-responsive img-rounded" id="pnm" src="img/tur.png" alt="Touristic Map" height="620px" width="100%">
-
-      <p>A touristic map aimed to the general public to display the most interesting and important sights of the Park such as ruins, archeological sites, churches, hermitages, lookouts, old mills, towers and fortresses, the so-called ice wells, as well as information regarding accommodation (hotel, camping or rural lodgings), restaurants and trails. The color degradation of the map background intends to demonstrate the hypsometric profile of the Park.
-      </p>
-
-      <a class="btn btn-primary" href="npmontseny/turi.pdf" role="button">Download Touristic Map (26 MB)</a>
-
-    </div>  
-
-    <footer class="footer">
-      <p>&copy; Marc Ibars 2016</p>
-    </footer>
-
-  </div> <!--/container-->
-
-	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>  	
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-</body>
-
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <meta name="author" content="Marc Ibars">
+    <!--<link rel="icon" href="/favicon.ico">-->
+
+	<title> Marc Ibars </title>	
+
+	 <!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+	<!--Google Fonts-->
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+	<!--Custom CSS-->
+	<link rel="stylesheet" href="libs/css/style.css"> 
+
+	 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+	<div class= "container">
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+		            <li role="presentation" class="active"><a href="/">GIS & Cartography Portfolio</a></li>
+		            <!--<li role="presentation"><a href="timeline.html">Timeline</a></li>-->
+		            <!--<li role="presentation"><a href="resume.html">Resume</a></li>-->
+		            <li role="presentation"><a href="contact">Contact</a></li>
+	      </ul>
+
+      </nav>
+        	<h3 role="presentation" class="text-muted"><a href="/">Marc Ibars</a></h3>
+    </div>       
+       <h2>Montseny Natural Park Map Series <small>March 2015</small></h2>  
+      <p>The following set of maps of the <a href="http://parcs.diba.cat/web/montseny" target="_blank">Montseny Natural Park</a> were created as part of the Cartographic Module during the MS in GIS that I finished on March 2016. The purpose was to create 3 different kind of thematic maps to get familiar with cartographic design, symbology, map elements and composition.</p>  
+
+    <!--Mapa 1-->
+    <div class="col-md-13">
+      <h3> Topographic Map </h3>   
+      <img class="img-responsive img-rounded" id="pnm" src="img/topo.png" alt="Topographic Map" height="620px" width="100%">
+      <p>A topographic map is a type of map characterized by both natural and man-made features. It displays large-scale detail of ground relief (contour lines, landforms and terrain), drainage (rivers and water bodies), forest cover, populated areas, facilities, transportation routes  (roads and railways) and administrative areas.</p>
+      <a class="btn btn-primary" href="npmontseny/topo.pdf" role="button">Download Topographic Map (43 MB)</a>
+      <hr>     
+    </div>
+
+    <!--Mapa 2-->
+    <div class="col-md-13">
+      <h3> Vegetation Map </h3>
+     <img class="img-responsive img-rounded" id="pnm" src="img/veg.png" alt="Vegetation Map" height="620px" width="100%">
+      <p>The vegetation map shows a different range of colors according to the natural vegetation or land cover within the boundaries of the Park. The categories identified are forest, brushwood, crop, pasture, grassland, tree plantation, orchard, riparian strip and rocky surface.</p>
+      <a class="btn btn-primary" href="npmontseny/veget.pdf" role="button">Download Vegetation Map (14 MB)</a>
+      <hr>
+    </div>
+
+    <!--Mapa 3-->
+    <div class="col-md-13">
+      <h3> Touristic Map </h3> 
+      <img class="img-responsive img-rounded" id="pnm" src="img/tur.png" alt="Touristic Map" height="620px" width="100%">
+      <p>A touristic map aimed to the general public to display the most interesting and important sights of the Park such as ruins, archeological sites, churches, hermitages, lookouts, old mills, towers and fortresses, the so-called ice wells, as well as information regarding accommodation (hotel, camping or rural lodgings), restaurants and trails. The color degradation of the map background intends to demonstrate the hypsometric profile of the Park.
+      </p>
+      <a class="btn btn-primary" href="npmontseny/turi.pdf" role="button">Download Touristic Map (26 MB)</a>
+    </div>  
+
+    <footer class="footer">
+      <p>&copy; Marc Ibars 2021</p>
+    </footer>
+
+  </div> <!--/container-->
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>  	
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</body>
 </html>
