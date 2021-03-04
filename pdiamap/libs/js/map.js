@@ -1,9 +1,9 @@
 		
 function init() { 
 
-  /*//Add custom ZoomControl with ZoomHome
+  //Add custom ZoomControl with ZoomHome
   var zoomHome = L.Control.zoomHome();
-  zoomHome.addTo(map);  */
+  zoomHome.addTo(map);
 
 //baseLayers
 var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
