@@ -52,7 +52,7 @@ function init() {
   //Uploading the GeoJSON's
   $.getJSON('geojson/tiendas.geojson', function(data){
     tiendas.addData(data);
-  });  
+  }); 
 
   /*
   //WMS Geoserver Service Area
@@ -77,14 +77,15 @@ function init() {
   };
 
   var overLayers = {
-    "Stores": tiendas,
-    "Service Area": serviceArea,
-    "Clients": clients 
+    "Stores": tiendas
+   /* "Service Area": serviceArea,
+    "Clients": clients */
   };
-
   
   //LayerControl
-  L.control.layers (baseLayers,overLayers,{collapsed: false}).addTo(map); 
+  L.control.layers (baseLayers,overLayers).addTo(map); 
+  
+  //{collapsed: false}
   
   //Leaflet Search
   //Canviat l'atribut "title" per "Sfid" a l'arxiu base del plugin
