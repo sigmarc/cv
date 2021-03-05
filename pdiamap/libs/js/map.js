@@ -50,10 +50,12 @@ function init() {
   var clients = L.geoJson(null, {
       style: function (feature) {
         return {
+        radius: 2,
+        fillColor: "#ff7800",
         color: "#000000",
-        weight: 0.25,
+        weight: 1,
         opacity: 0.5,
-        fillOpacity: 10 
+        fillOpacity: 0.8 
         };
       }   
   }).addTo(map);
