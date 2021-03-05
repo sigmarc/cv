@@ -48,18 +48,21 @@ function init() {
 
   // Layer clients
   var clients = L.geoJson(null, {
-      style: function (feature) {
-        return {
+      pointToLayer:function (feature, latlng){
+        return L.circleMarker (latlng,clientoptions);
+      }
+  }).addTo(map); 
+
+  // Layer clients
+  var clientoptions = {
         radius: 2,
         fillColor: "#ff7800",
         color: "#000000",
         weight: 1,
         opacity: 0.5,
         fillOpacity: 0.8 
-        };
-      }   
-  }).addTo(map);
-   
+  };
+         
 
   //Uploading the GeoJSONs
   $.getJSON('geojson/clients.geojson', function(data){
