@@ -70,7 +70,6 @@ function init() {
   //Layer ServiceArea
   var servicearea = L.geoJson (servicearea, {
     style : SAStyle,
-    onEachFeature:onEachFeature
   }).addTo(map);
 
 
