@@ -31,7 +31,7 @@ function init() {
     markerColor: 'darkred'
   });  
 
-  // Layer tiendas
+  // Layer Tiendas
   var tiendas = L.geoJson(null, {
     style: function (feature) {
       return feature.properties && feature.properties.style;
@@ -45,24 +45,34 @@ function init() {
     }
   }).addTo(map);
 
+  //Style Clients
+  var CStyle = {        
+    fillColor: "#8d080d",        
+    weight: 1,
+    opacity: 0.5,
+    fillOpacity: 0.8 
+  };
 
-  // Layer clients
+  //Layer Clients
   var clients = L.geoJson(null, {
       pointToLayer:function (feature, latlng){
-        return L.circleMarker (latlng,clientoptions);
+        return L.circleMarker (latlng,CStyle);
       }
   }).addTo(map); 
 
-  // Layer clients
-  var clientoptions = {
-        radius: 2,
-        fillColor: "#ff7800",
-        color: "#000000",
-        weight: 1,
-        opacity: 0.5,
-        fillOpacity: 0.8 
+  //Style Service Area
+  var SAStyle = {
+    "color": "#800006",
+    "weight": 1.5,
+    "fillOpacity": 0.1
   };
-         
+
+  //Layer ServiceArea
+  var servicearea = L.geoJson (servicearea, {
+    style : SAStyle,
+    onEachFeature:onEachFeature
+  }).addTo(map);
+
 
   //Uploading the GeoJSONs
   $.getJSON('geojson/clients.geojson', function(data){
@@ -86,8 +96,8 @@ function init() {
   
   var overLayers = {
     "Stores": tiendas,
-    "Clients": clients
-    //"Service Area": servicearea 
+    "Clients": clients,
+    "Service Area": servicearea 
   }; 
   
   //Layer and Scale Controls
