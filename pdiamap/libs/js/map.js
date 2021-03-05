@@ -81,8 +81,8 @@ function init() {
   
   var overLayers = {
     "Stores": tiendas,
-    "Clients": clients, 
-    "Service Area": servicearea 
+    "Clients": clients
+    //"Service Area": servicearea 
   }; 
   
   //Layer and Scale Controls
