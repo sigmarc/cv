@@ -47,9 +47,10 @@ function init() {
 
   //Style Clients
   var CStyle = {        
+    radius: 1,
     fillColor: "#8d080d",        
     weight: 1,
-    opacity: 0.5,
+    opacity: 0,    
     fillOpacity: 0.8 
   };
 
