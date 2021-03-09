@@ -76,12 +76,12 @@ function init() {
   //Zoom  
   map.on('zoomend', function() {
     if (map.getZoom() < 10){
-      if (map.hasLayer(clients)) map.removeLayer(clients);
-      if (map.hasLayer(servicearea)) map.removeLayer(servicearea);
+      map.hasLayer(clients).removeLayer(clients);
+      map.hasLayer(servicearea).removeLayer(servicearea);
     }
     else {
-      if (map.hasLayer(clients)) map.addLayer(clients);
-      if (map.hasLayer(servicearea)) map.addLayer(servicearea);
+     map.hasLayer(clients).addLayer(clients);
+     map.hasLayer(servicearea).addLayer(servicearea);
     }
   });
 
