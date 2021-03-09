@@ -74,6 +74,13 @@ function init() {
   }).addTo(map);
 
 
+  if (map.getZoom()<11){
+    clients.removeFrom(map);
+  }else {
+    clients.addTo(map);
+  }
+
+
   //Uploading the GeoJSONs
   $.getJSON('geojson/clients.geojson', function(data){
     clients.addData(data);
