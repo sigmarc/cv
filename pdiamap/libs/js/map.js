@@ -73,12 +73,12 @@ function init() {
     style : SAStyle,
   }).addTo(map);
 
-
-  if (map.getZoom()>11){
+  //Zoom  
+  if (map.getZoom()<11){
     clients.removeFrom(map);
   }else {
     clients.addTo(map);
-  }
+  };
 
 
   //Uploading the GeoJSONs
