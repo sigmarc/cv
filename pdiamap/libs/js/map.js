@@ -74,7 +74,7 @@ function init() {
   }).addTo(map);
 
 
-  if (map.getZoom()<11){
+  if (map.getZoom()>11){
     clients.removeFrom(map);
   }else {
     clients.addTo(map);
