@@ -75,7 +75,7 @@ function init() {
 
   //Zoom  
   map.on('zoomend', function() {
-    if (map.getZoom() < 10){
+    if (map.getZoom() > 10){
       map.hasLayer(clients).removeLayer(clients);
       map.hasLayer(servicearea).removeLayer(servicearea);
     }
