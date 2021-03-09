@@ -74,11 +74,16 @@ function init() {
   }).addTo(map);
 
   //Zoom  
-  if (map.getZoom()<11){
-    clients.removeFrom(map);
-  }else {
-    clients.addTo(map);
-  };
+  map.on('zoomend', function() {
+    if (map.getZoom() < 10){
+      if (map.hasLayer(clients)) map.removeLayer(clients);
+      if (map.hasLayer(servicearea)) map.removeLayer(servicearea);
+    }
+    else {
+      if (map.hasLayer(clients)) map.addLayer(clients);
+      if (map.hasLayer(servicearea)) map.addLayer(servicearea);
+    }
+  });
 
 
   //Uploading the GeoJSONs
