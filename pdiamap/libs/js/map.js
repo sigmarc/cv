@@ -73,18 +73,6 @@ function init() {
     style : SAStyle,
   }).addTo(map);
 
-  //Zoom  
-  map.on('zoomend', function() {
-    if (map.getZoom() > 10){
-      map.hasLayer(clients).removeLayer(clients);
-      map.hasLayer(servicearea).removeLayer(servicearea);
-    }
-    else {
-     map.hasLayer(clients).addLayer(clients);
-     map.hasLayer(servicearea).addLayer(servicearea);
-    }
-  });
-
 
   //Uploading the GeoJSONs
   $.getJSON('geojson/clients.geojson', function(data){
